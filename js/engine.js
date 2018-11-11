@@ -25,15 +25,12 @@ var Engine = (function(global) {
         lastTime,
         id;
 
-    const modal = document.querySelector('.modal-bg');
-    const replay = document.querySelector('.modal-button');
+    
 
-    replay.addEventListener('click', function() {
+    function toggleModal() {
+        const modal = document.querySelector('.modal-bg');
         modal.classList.toggle('hide');
-        player.reset();
-        player.triumphant = false;
-        win.requestAnimationFrame(main);
-    });
+    }
 
     canvas.width = 505;
     canvas.height = 606;
@@ -63,12 +60,25 @@ var Engine = (function(global) {
          */
         lastTime = now;
 
+
+
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
         if (player.triumphant === true) {
+            toggleModal();
+            const replay = document.querySelector('.modal-button');
+            replay.addEventListener('click', function() {
+                if (player.triumphant === true) {
+                    toggleModal();
+                    player.reset();
+                    player.triumphant = false;
+                    win.requestAnimationFrame(main);
+                }
+                
+            });
             win.requestAnimationFrame(id);
-            modal.classList.toggle('hide');
+            
         } else {
             id = win.requestAnimationFrame(main);
         }
