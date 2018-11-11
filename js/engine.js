@@ -25,23 +25,6 @@ var Engine = (function(global) {
         lastTime,
         id;    
 
-        const modal = document.querySelector('.modal-bg');
-        const replay = document.querySelector('.modal-button');
-
-    //     replay.addEventListener('click', function() {
-    //             modal.classList.toggle('hide');
-    //             player.reset();
-    //             player.triumphant = false;
-    //             win.requestAnimationFrame(main)
-    //    });
-
-
-    // function toggleModal() {
-    //     const modal = document.querySelector('.modal-bg');
-    //     win.cancelAnimationFrame(id);
-    //     modal.classList.toggle('hide');
-    // }
-
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -86,13 +69,10 @@ var Engine = (function(global) {
                         player.triumphant = false;
                         win.requestAnimationFrame(main)
                         }
-        });
-         
+        });        
         } else {
             id = win.requestAnimationFrame(main);
-
         }
-       
     }
 
     /* This function does some initial setup that should only occur once,
@@ -116,7 +96,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -174,7 +153,6 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
         renderEntities();
     }
 

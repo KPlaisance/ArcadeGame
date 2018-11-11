@@ -21,15 +21,12 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    // If enemy is not passed boundary
+    // Checks to see if boundary has been crossed
     if (this.x < this.boundary) {
-        // Move forward
-        // Increment x by speed * dt
         this.x += this.speed * dt;
     }
 
     else {
-        // Reset pos to start
         this.x = this.resetPos;
     }
         
@@ -44,8 +41,6 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-// Hero Class
-
 class Hero {
     constructor() {
         this.step = 101;
@@ -58,7 +53,6 @@ class Hero {
         this.triumphant = false;
     }
 
-    // Draw hero sprite on current x and y coord position
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
@@ -92,59 +86,33 @@ class Hero {
                 break;
         }
     }
-    // Update position
+
+   
     update() {
-
-    // Check collision here
-    for (let enemy of allEnemies) {
-        if 
-        (this.y === enemy.y && (enemy.x + enemy.step/2 > 
-            this.x && enemy.x < this.x + this.step/2)) {
-            this.reset();
+         // Collision Checking
+        for (let enemy of allEnemies) 
+        {
+            if (this.y === enemy.y && (enemy.x + enemy.step/2 > 
+                this.x && enemy.x < this.x + this.step/2))
+            {
+                this.reset();
+            }
         }
-    }
-        // Did player x and y collide with enemy?
-    // Check win here?
-        // Did player x and y reach final title?
-        if(this.y === 55) {
-            this.triumphant = true;
+            // Did the player make it to the last road (win)?
+            if
+            (this.y === 55)
+            {
+                this.triumphant = true;
+            }
+
         }
-
-    }
-
-    reset() {
+    // Resets character        
+    reset()
+    {
         this.y = this.startY;
         this.x = this.startX;
     }
-
-    }
-
-
-    // Constructor
-
-        // Properties
-            // x pos
-            // y pos
-            // Sprite image
-
-        // Methods
-
-            
-            // Render
-                // Draw player sprite on current x and y coord position
-
-            // Handle keyboard input
-                // Update player's x and y property according to input
-
-            // Reset Hero
-                // Set x and y to starting x and y
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -159,14 +127,15 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// New Hero object
+// New Hero and Enemy objects
 const player = new Hero();
 const bug1 = new Enemy(-101, 0, 400);
 const bug2 = new Enemy(-101, 83, 260);
 const bug3 = new Enemy((-101*2.5), 83, 260);
 const bug4 = new Enemy((-101*5), 166, 200);
-// Init allEnemies array
+
+// Collection of enemies
 const allEnemies = [];
-// For each enemy create and push new Enemy object into above array
+
+// Push enemy objects into collection
 allEnemies.push(bug1,bug2,bug3,bug4);
-console.log(allEnemies);
