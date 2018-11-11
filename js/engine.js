@@ -23,14 +23,24 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime,
-        id;
+        id;    
 
-    
-
-    function toggleModal() {
         const modal = document.querySelector('.modal-bg');
-        modal.classList.toggle('hide');
-    }
+        const replay = document.querySelector('.modal-button');
+
+    //     replay.addEventListener('click', function() {
+    //             modal.classList.toggle('hide');
+    //             player.reset();
+    //             player.triumphant = false;
+    //             win.requestAnimationFrame(main)
+    //    });
+
+
+    // function toggleModal() {
+    //     const modal = document.querySelector('.modal-bg');
+    //     win.cancelAnimationFrame(id);
+    //     modal.classList.toggle('hide');
+    // }
 
     canvas.width = 505;
     canvas.height = 606;
@@ -60,27 +70,27 @@ var Engine = (function(global) {
          */
         lastTime = now;
 
-
-
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
         if (player.triumphant === true) {
-            toggleModal();
+            win.cancelAnimationFrame(id);
+            const modal = document.querySelector('.modal-bg');
             const replay = document.querySelector('.modal-button');
-            replay.addEventListener('click', function() {
-                if (player.triumphant === true) {
-                    toggleModal();
-                    player.reset();
-                    player.triumphant = false;
-                    win.requestAnimationFrame(main);
-                }
-                
-            });
-            win.requestAnimationFrame(id);
-            
+            modal.classList.toggle('hide');
+
+                replay.addEventListener('click', function() {
+                        if (player.triumphant === true) {
+                        modal.classList.toggle('hide');
+                        player.reset();
+                        player.triumphant = false;
+                        win.requestAnimationFrame(main)
+                        }
+        });
+         
         } else {
             id = win.requestAnimationFrame(main);
+
         }
        
     }
