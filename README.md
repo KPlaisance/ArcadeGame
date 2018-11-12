@@ -1,8 +1,5 @@
 # Project Overview - Classic Arcade Game Clone
 
-In this project, I explored using Jasmine to write a test suite for the Feed Reader program.
-I was able to make sure each of the expected outcomes actually occurred. This gave me confidence the code works as expected.
-
 This game is the third project in the Udacity Front-End Nanodegree program.
 
 The goal of this game is to make the boy cross the road while dodging enemies. If he makes it the other side, next to the river
