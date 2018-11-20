@@ -9,8 +9,4 @@ I used a walkthrough by Matthew Cranford and Udacity as reference with help figu
 
 # How to run the project
 
-After downloading the files to your local computer, navigate to the root directory and double click on: index.html
-
-This will open the file. If Chrome is the browser that opened, then press F12 to open the Developer Tools. In the console, you will notice there are 0 errors.
-
-To play the game, use the keyboard arrow keys (Up, Down, Left, Right) to move the character.
+After downloading the files to your local computer, navigate to the root directory and double click on: index.html. The game will open in the default web browser.
